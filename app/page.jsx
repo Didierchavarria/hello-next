@@ -18,7 +18,7 @@ const opcionesDeMenu = [
 
 const menu = function () {
   const [elementoActivo, setElementoActivo] = useState(1);
-  const [contador, setContador] = useState(50);
+  const [contador, setContador] = useState(30);
 
   const handleIncrement = (newValue) => {
     setContador(newValue); // Update the parent state when the event is emitted
