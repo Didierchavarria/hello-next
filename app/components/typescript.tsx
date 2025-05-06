@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -6,6 +7,7 @@ import React from "react";
 const myString: string = "Hello, TypeScript!";
 const myNumber: number = 42;
 const myBoolean: boolean = true;
+
 const myArray: number[] = [1, 2, 3, 4, 5];
 const myTuple: [string, number] = ["Age", 30];
 const myObject: { name: string; age: number } = { name: "Jose", age: 30 };
@@ -16,13 +18,12 @@ const multiply = (a: number, b: number): number => {
 };
 
 // Enum example
-enum Direction {
+enum Navigation {
   Up = "UP",
   Down = "DOWN",
   Left = "LEFT",
-  Right = "RIGHT",
+  Right = "RIGHT"
 }
-const myDirection: Direction = Direction.Up;
 
 // Define a TypeScript interface for props
 interface GreetingProps {
@@ -35,7 +36,9 @@ const Greeting: React.FC<GreetingProps> = ({ name, age }) => {
   return (
     <div>
       <p>Hello, {name}!</p>
-      {age && <p>You are {age} years old.</p>}
+      {age? 
+      <p>You are {age} years old.</p> : 
+      <p>Age not provided.</p>}
     </div>
   );
 };
@@ -52,6 +55,20 @@ const StatusMessage: React.FC<{ status: Status }> = ({ status }) => {
   return <p>Status: {status}</p>;
 };
 
+interface Persona {
+  nombre: string;
+  apellido: string;
+}
+
+const NombreCompleto: React.FC<Persona> = ({nombre, apellido}) => {
+  return <p>El nombre completo es: <span>{nombre} {apellido}</span></p>;
+};
+
+// agregar otro componente que se llame NombreCompleto
+// que reciba un nombre y un apellido y los muestre en pantalla
+// ese nombre y apellido deben estar definidos en un interface llamado Persona
+
+
 // Main component to showcase examples
 const TypescriptExamples: React.FC = () => {
   return (
@@ -61,6 +78,8 @@ const TypescriptExamples: React.FC = () => {
       <Greeting name="Maria" />
       <p>Sum of 5 and 10 is: {addNumbers(5, 10)}</p>
       <StatusMessage status="success" />
+
+      <NombreCompleto nombre="Juan" apellido="Perez"/>
     </div>
   );
 };
